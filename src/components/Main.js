@@ -1,10 +1,10 @@
-import { BrowserRouter as Router } from 'react-router-dom';
 import { Route, Routes } from 'react-router-dom';
 import Homepage from "./Homepage";
 import Chicago from "./Chicago";
 import Specials from "./Specials";
 import BookingPage from "./BookingPage";
 import Nav from './Nav';
+import { Box } from '@chakra-ui/react';
 
 const Main = () => {
 
@@ -37,19 +37,19 @@ const Main = () => {
         {
             text: "Login",
             path: "/login",
-            element: <Homepage />
+            element: <BookingPage />
         },
     ]
 
     return (
-        <Router>
+        <Box>
             <Nav navbarLinks={navbarLinks} />
             <Routes>
                 {navbarLinks.map((link, index) => (
                     <Route key={index} path={link.path} element={link.element} />
-                ))}
+                    ))}
             </Routes>
-        </Router>
+        </Box>
     );
 };
 

@@ -1,0 +1,30 @@
+.footer {
+    display: flex;
+    background-color: #495e57;
+    color: white;
+    justify-content: space-around;
+    padding: 16vh 20vw;
+}
+
+label {
+    color: #f4ce14;
+}
+
+.listing,
+.footImg {
+    min-width: 15vw;
+}
+
+li {
+    list-style: none;
+}
+
+li>a,
+li>Link {
+    transition: font-weight 200ms ease-in-out;
+}
+
+li>a:hover,
+li>Link:hover {
+    font-weight: 900;
+}
