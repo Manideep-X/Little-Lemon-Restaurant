@@ -15,7 +15,7 @@ const Testimonial = ({ photo, name, review }) => {
                     <Avatar size="xl" name={name} src={photo} />
                     <Heading size="md" fontFamily={`"Karla", sans-serif;`}>{name}</Heading>
                 </HStack>
-                <Text fontSize="sm" color="rgba(0,0,0,0.6)" fontFamily={`"Karla", sans-serif;`}>"{review}..."</Text>
+                <Text fontSize="sm" color="rgba(0,0,0,0.6)" fontFamily={`"Karla", sans-serif;`} textAlign="center">"{review}..."</Text>
             </VStack>
         </Box>
     );
