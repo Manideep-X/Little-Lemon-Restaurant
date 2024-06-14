@@ -1,4 +1,3 @@
-// import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Logo from '../icons_assets/Logo.svg';
 import { Box, HStack } from "@chakra-ui/react";
