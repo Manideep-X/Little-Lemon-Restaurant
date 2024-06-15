@@ -9,7 +9,6 @@ const CTAData = {
 }
 
 const CallToAction = () => {
-    console.log('Rendering CallToAction');
     return (
         <section>
             <HStack spacing={8}>
