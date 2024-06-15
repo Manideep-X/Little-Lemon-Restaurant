@@ -66,14 +66,15 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                 <VStack spacing={12} style={{backgroundColor:"#495e57",margin:"3vh 0vw",padding:"4vh 6vw",borderRadius:"20px"}}>
 
                     <FormControl isInvalid={formik.touched.date && !!formik.errors.date}>
-                        <FormLabel htmlFor="res-data">Choose date</FormLabel>
+                        <FormLabel htmlFor="date">Choose date</FormLabel>
                         <Input
                             type="date"
-                            id="res-date"
+                            id="date"
                             name="date"
                             value={formData.date}
                             onChange={onChangeData}
                             {...formik.getFieldProps('date')}
+                            aria-label="Choose date"
                         />
                         {formik.touched.date && formik.errors.date ? (
                             <FormErrorMessage>{formik.errors.date}</FormErrorMessage>
@@ -81,15 +82,16 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                     </FormControl>
 
                     <FormControl isInvalid={formik.touched.time && !!formik.errors.time}>
-                        <FormLabel htmlFor="res-time">Choose Time</FormLabel>
+                        <FormLabel htmlFor="time">Choose Time</FormLabel>
                         <Select
-                            id="res-time"
+                            id="time"
                             name="time"
                             placeholder="Choose from below"
                             value={formData.time}
                             onChange={onChangeData}
                             style={{backgroundColor:"#495e57"}}
                             {...formik.getFieldProps('time')}
+                            aria-label="Choose time"
                         >
                             {availableTimes.map((times) => (
                                 <option key={times} value={times} style={{backgroundColor:"#495e57"}}>{times}</option>
@@ -108,10 +110,11 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                                 name="guest"
                                 value={formData.guest}
                                 onChange={onChangeData}
+                                aria-label="Total guest's number"
                             />
                             <NumberInputStepper>
-                                <NumberIncrementStepper />
-                                <NumberDecrementStepper />
+                                <NumberIncrementStepper aria-label="Increase guest's number by one" />
+                                <NumberDecrementStepper aria-label="Decrease guest's number by one" />
                             </NumberInputStepper>
                         </NumberInput>
                     </FormControl>
@@ -126,6 +129,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                             onChange={onChangeData}
                             style={{backgroundColor:"#495e57"}}
                             {...formik.getFieldProps('occasion')}
+                            aria-label="Choose occasion"
                         >
                             <option value="Birthday" style={{backgroundColor:"#495e57"}}>Birthday</option>
                             <option value="Anniversary" style={{backgroundColor:"#495e57"}}>Anniversary</option>
@@ -142,6 +146,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                         style={{ backgroundColor: "#f4ce14" }} 
                         width="full"
                         isDisabled={!formik.isValid || !formik.dirty}
+                        aria-label="Make Your Reservation"
                     >
                         Make Your Reservation
                     </Button>

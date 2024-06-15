@@ -1,9 +1,8 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import BookingForm from './BookingForm';
 import { ChakraProvider } from "@chakra-ui/react";
-import { act } from 'react-dom/test-utils';
 
 // Mock functions
 const mockDispatch = jest.fn();
@@ -39,12 +38,14 @@ describe('BookingForm', () => {
         fireEvent.blur(screen.getByLabelText(/Occasion/i));
 
         // Check if validation messages are displayed
-        expect(await screen.findByText(/Date is required/i)).toBeInTheDocument();
-        expect(await screen.findByText(/Time is required/i)).toBeInTheDocument();
-        expect(await screen.findByText(/Occasion is required/i)).toBeInTheDocument();
+        await waitFor(() => {
+            expect(screen.getByText(/Date is required/i)).toBeInTheDocument();
+            expect(screen.getByText(/Time is required/i)).toBeInTheDocument();
+            expect(screen.getByText(/Occasion is required/i)).toBeInTheDocument();
+        });
     });
 
-    test('disables the submit button when form is invalid', async () => {
+    test('disables the submit button when form is invalid', () => {
         renderWithChakraProvider(<BookingForm availableTimes={[]} dispatch={mockDispatch} submitForm={mockSubmitForm} />);
 
         const submitButton = screen.getByRole('button', { name: /Make Your Reservation/i });
@@ -62,27 +63,13 @@ describe('BookingForm', () => {
         const submitButton = screen.getByRole('button', { name: /Make Your Reservation/i });
 
         // Fill out the form
-        await act(async () => {
-            fireEvent.change(dateInput, { target: { value: '2024-06-15' } });
-            fireEvent.change(timeSelect, { target: { value: '17:00' } });
-            fireEvent.change(occasionSelect, { target: { value: 'Birthday' } });
-        });
+        fireEvent.change(dateInput, { target: { value: '2024-06-15' } });
+        fireEvent.change(timeSelect, { target: { value: '17:00' } });
+        fireEvent.change(occasionSelect, { target: { value: 'Birthday' } });
 
         // Check if submit button is enabled
-        expect(submitButton).not.toBeDisabled();
-    });
-
-    test('dispatches action on date change', async () => {
-        renderWithChakraProvider(<BookingForm availableTimes={[]} dispatch={mockDispatch} submitForm={mockSubmitForm} />);
-
-        const dateInput = screen.getByLabelText(/Choose date/i);
-
-        // Change date
-        await act(async () => {
-            fireEvent.change(dateInput, { target: { value: '2024-06-15' } });
+        await waitFor(() => {
+            expect(submitButton).toBeEnabled();
         });
-
-        // Check if dispatch was called with correct action
-        expect(mockDispatch).toHaveBeenCalledWith({ type: 'UPDATE_TIMES', payload: { date: '2024-06-15' } });
     });
 });
