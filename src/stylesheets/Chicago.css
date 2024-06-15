@@ -5,6 +5,7 @@
 .box-container{
     padding-top: 10vh;
     height: 90%;
+    overflow-y: scroll;
 }
 .first-half{
     width: 30vw;
@@ -43,4 +44,12 @@
 #img2{
     top: 30%;
     z-index: 1;
+}
+@media (max-width: 650px) {
+    .overlap{
+        display: none;
+    }
+    .first-half{
+        width: 80vw;
+    }
 }

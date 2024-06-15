@@ -29,10 +29,10 @@ const Specials = () => {
     return (
         <section style={{marginTop:"13vh"}}>
             <VStack spacing={8}>
-                <HStack spacing="30vw">
+                <HStack spacing="28vw">
                     <Heading fontSize="4xl" fontWeight="600" fontFamily={`"Markazi Text", serif;`}>Specials</Heading>
                     <Link to='/menu'>
-                        <Button className="menu-box" style={{ backgroundColor: "#f4ce14", borderRadius:"20px", fontSize:"1.3vw" }} fontFamily={`"Karla", sans-serif;`}>Online Menu</Button>
+                        <Button className="menu-box" style={{ backgroundColor: "#f4ce14", borderRadius:"20px" }} fontFamily={`"Karla", sans-serif;`}>Online Menu</Button>
                     </Link>
                 </HStack>
                 <Box style={{display:"flex", flexWrap:"wrap", gap:"4vw", padding:"6vh 0vw", justifyContent:"center", alignItems:"center"}}>

@@ -20,7 +20,7 @@ const CallToAction = () => {
                     <Text as="p" fontSize="lg" fontFamily={`"Karla", sans-serif;`}>{CTAData.description}</Text>
                     <Box>
                         <Link to='/reservations'>
-                            <Button className="call-box" style={{ backgroundColor: "#f4ce14", fontSize:"1.3vw",borderRadius: "20px",padding:"20px" }} fontFamily={`"Karla", sans-serif;`}>Reserve a Table</Button>
+                            <Button className="call-box" style={{ backgroundColor: "#f4ce14",borderRadius: "20px",padding:"20px" }} fontFamily={`"Karla", sans-serif;`}>Reserve a Table</Button>
                         </Link>
                     </Box>
                 </VStack>
