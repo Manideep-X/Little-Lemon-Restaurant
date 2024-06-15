@@ -75,30 +75,30 @@ const Footer = () => {
                 <img src={logo2} alt='Little Lemon' width="150vw" />
             </Box>
             <section className='navList listing'>
-                <label>
+                <label htmlFor='foot-nav' >
                     <Heading size="md" fontFamily={`"Karla", sans-serif;`}>Navigation</Heading>
                 </label>
-                <ul>
+                <ul id='foot-nav' name='foot-nav'>
                     {navbarLinks.map((navList) => (
                         <li><Link key={navList.text} to={navList.path}>{navList.text}</Link></li>
                     ))}
                 </ul>
             </section>
             <section className='contactList listing'>
-                <label>
+                <label htmlFor='foot-contact' >
                     <Heading size="md" fontFamily={`"Karla", sans-serif;`}>Contacts</Heading>
                 </label>
-                <ul>
+                <ul id='foot-contact' name='foot-contact'>
                     {contacts.map((navList) => (
                         <li><a key={navList.text} href={navList.path} target='_blank' rel='noreferrer'>{navList.text}</a></li>
                     ))}
                 </ul>
             </section>
             <section className='socialList listing'>
-                <label>
+                <label htmlFor='foot-social'>
                     <Heading size="md" fontFamily={`"Karla", sans-serif;`} target='_blank' rel='noreferrer'>Social Media</Heading>
                 </label>
-                <ul>
+                <ul id='foot-social' name='foot-social'>
                     {social.map((navList) => (
                         <li><a key={navList.text} href={navList.path}>{navList.text}</a></li>
                     ))}
