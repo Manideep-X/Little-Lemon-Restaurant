@@ -80,7 +80,7 @@ const Footer = () => {
                 </label>
                 <ul id='foot-nav' name='foot-nav'>
                     {navbarLinks.map((navList) => (
-                        <li><Link key={navList.text} to={navList.path}>{navList.text}</Link></li>
+                        <li key={navList.text}><Link to={navList.path}>{navList.text}</Link></li>
                     ))}
                 </ul>
             </section>
@@ -90,7 +90,7 @@ const Footer = () => {
                 </label>
                 <ul id='foot-contact' name='foot-contact'>
                     {contacts.map((navList) => (
-                        <li><a key={navList.text} href={navList.path} target='_blank' rel='noreferrer'>{navList.text}</a></li>
+                        <li key={navList.text}><a href={navList.path} target='_blank' rel='noreferrer'>{navList.text}</a></li>
                     ))}
                 </ul>
             </section>
@@ -100,7 +100,7 @@ const Footer = () => {
                 </label>
                 <ul id='foot-social' name='foot-social'>
                     {social.map((navList) => (
-                        <li><a key={navList.text} href={navList.path}>{navList.text}</a></li>
+                        <li key={navList.text}><a href={navList.path}>{navList.text}</a></li>
                     ))}
                 </ul>
             </section>
