@@ -1,9 +1,14 @@
+import { fetchAPI } from "../api";
 import { render, screen } from "@testing-library/react";
 import BookingForm from './BookingForm';
-import {updateTimes, initializeTimes} from './Main'
+import { updateTimes, initializeTimes } from './Main'
 
 const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
 const dispatch = jest.fn();
+
+jest.mock('../api', () => ({
+    fetchAPI: jest.fn(),
+}));
 
 // Test static text of heading in BookingForm
 test('Renders the BookingForm heading', () => {
@@ -12,17 +17,28 @@ test('Renders the BookingForm heading', () => {
     expect(headingElement).toBeInTheDocument();
 });
 
-// Test initializeTimes function
-test('initializeTimes returns the expected initial times correctly', () => {
-    const expectedTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
-    const result = initializeTimes();
-    expect(result).toEqual(expectedTimes);
-});
+describe('Booking Times using API', () => {
+    beforeEach(() => {
+        // Reset mock before each test
+        fetchAPI.mockReset();
+    });
 
-// Test updateTimes function
-test('updateTimes returns the same state provided in the action correctly', () => {
-    const initialState = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
-    const action = { type: 'UPDATE_TIMES', payload: { date: "2023-06-14" } };
-    const result = updateTimes(initialState, action);
-    expect(result).toEqual(initialState);
+    // Test initializeTimes function
+    test('initializeTimes should return the available times from fetchAPI', () => {
+        const mockTimes = ["17:00", "18:00", "19:00"];
+        fetchAPI.mockReturnValue(mockTimes);
+
+        const initialTimes = initializeTimes();
+        expect(initialTimes).toEqual(mockTimes);
+    });
+
+    // Test updateTimes function
+    test('updateTimes should return the available times for the given date from fetchAPI', () => {
+        const mockTimes = ["17:00", "18:00", "19:00"];
+        fetchAPI.mockReturnValue(mockTimes);
+        const date = "2024-06-15"; // Pre-selected date
+
+        const updatedTimes = updateTimes([], { type: 'UPDATE_TIMES', payload: {date} });
+        expect(updatedTimes).toEqual(mockTimes);
+    });
 });
