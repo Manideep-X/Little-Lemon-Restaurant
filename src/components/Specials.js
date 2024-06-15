@@ -1,6 +1,7 @@
 import MenuCard from "../components/MenuCard"
 import { Button, Text, HStack, VStack } from "@chakra-ui/react";
 import Bruchetta from '../icons_assets/bruchetta.svg'
+import { Link } from "react-router-dom";
 
 const menuData = [
     {
@@ -10,7 +11,7 @@ const menuData = [
         price: "$ 12.99"
     },
     {
-        image: () => {return Bruchetta;},
+        image: () => { return Bruchetta; },
         title: "Bruchetta",
         description: "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil. ",
         price: "$ 5.99"
@@ -29,7 +30,9 @@ const Specials = () => {
             <VStack spacing={8}>
                 <HStack spacing="30vw">
                     <Text fontSize="2xl" fontWeight="600">Specials</Text>
-                    <Button style={{ backgroundColor: "#f4ce14" }} fontFamily={`"Karla", sans-serif;`}>Online Menu</Button>
+                    <Link to='/menu'>
+                        <Button style={{ backgroundColor: "#f4ce14" }} fontFamily={`"Karla", sans-serif;`}>Online Menu</Button>
+                    </Link>
                 </HStack>
                 <HStack spacing={8}>
                     {menuData.map((data) => (

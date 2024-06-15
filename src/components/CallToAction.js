@@ -1,5 +1,6 @@
 import { HStack, Heading, Text, Button, VStack, Box } from "@chakra-ui/react";
 import bruchetta from '../icons_assets/bruchetta.svg'
+import { Link } from "react-router-dom";
 
 const CTAData = {
     title: "Little Lemon",
@@ -17,7 +18,9 @@ const CallToAction = () => {
                     <Heading as="h3" size="lg" fontFamily={`"Karla", sans-serif;`}>{CTAData.place}</Heading>
                     <Text as="p" fontSize="lg" fontFamily={`"Karla", sans-serif;`}>{CTAData.description}</Text>
                     <Box>
-                        <Button style={{ backgroundColor: "#f4ce14" }} fontFamily={`"Karla", sans-serif;`}>Reserve a Table</Button>
+                        <Link to='/reservations'>
+                            <Button style={{ backgroundColor: "#f4ce14" }} fontFamily={`"Karla", sans-serif;`}>Reserve a Table</Button>
+                        </Link>
                     </Box>
                 </VStack>
                 <img src={CTAData.image} alt="Dish" />
