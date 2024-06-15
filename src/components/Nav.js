@@ -29,13 +29,13 @@ const Nav = ({ navbarLinks }) => {
     return (
         <nav className="navbar" style={{ transform: isVisible ? "translateY(0)" : "translateY(-100%)" }}>
             <Box as="nav" >
-                <HStack spacing={60} style={{ display: "flex", justifyContent: "center", padding: "2vh 0vw" }}>
-                    <Link to='/'>
-                        <img src={Logo} alt="Little Lemon" width="255vw" style={{}} />
+                <HStack spacing="10vw" style={{ display: "flex", justifyContent: "center", padding: "2vh 0vw" }}>
+                    <Link className="img-link" to='/'>
+                        <img src={Logo} alt="Little Lemon" width="255vw" />
                     </Link>
-                    <HStack spacing={6}>
+                    <HStack spacing="1.8vw">
                         {navbarLinks.map((link, index) => (
-                            <Link className="anchor" key={index} to={link.path} style={{ fontSize: "1.1rem", fontWeight: "600", paddingTop: "0.6vh" }}>
+                            <Link className="anchor" key={index} to={link.path} style={{ fontWeight: "600", paddingTop: "0.6vh" }}>
                                 {link.text}
                             </Link>
                         ))}
