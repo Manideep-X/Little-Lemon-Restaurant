@@ -1,6 +1,8 @@
 import MenuCard from "../components/MenuCard"
-import { Button, Text, HStack, VStack } from "@chakra-ui/react";
+import { Button, HStack, VStack, Heading, Box } from "@chakra-ui/react";
 import Bruchetta from '../icons_assets/bruchetta.svg'
+import { Link } from "react-router-dom";
+import '../stylesheets/Special.css'
 
 const menuData = [
     {
@@ -10,9 +12,9 @@ const menuData = [
         price: "$ 12.99"
     },
     {
-        image: () => {return Bruchetta;},
+        image: () => { return Bruchetta; },
         title: "Bruchetta",
-        description: "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil. ",
+        description: "Bruschetta is an Italian antipasto but our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil. ",
         price: "$ 5.99"
     },
     {
@@ -25,13 +27,15 @@ const menuData = [
 
 const Specials = () => {
     return (
-        <section>
+        <section style={{marginTop:"13vh"}}>
             <VStack spacing={8}>
                 <HStack spacing="30vw">
-                    <Text fontSize="2xl" fontWeight="600">Specials</Text>
-                    <Button style={{ backgroundColor: "#f4ce14" }} fontFamily={`"Karla", sans-serif;`}>Online Menu</Button>
+                    <Heading fontSize="4xl" fontWeight="600" fontFamily={`"Markazi Text", serif;`}>Specials</Heading>
+                    <Link to='/menu'>
+                        <Button className="menu-box" style={{ backgroundColor: "#f4ce14", borderRadius:"20px", fontSize:"1.3vw" }} fontFamily={`"Karla", sans-serif;`}>Online Menu</Button>
+                    </Link>
                 </HStack>
-                <HStack spacing={8}>
+                <Box style={{display:"flex", flexWrap:"wrap", gap:"4vw", padding:"6vh 0vw", justifyContent:"center", alignItems:"center"}}>
                     {menuData.map((data) => (
                         <MenuCard
                             key={data.title}
@@ -41,7 +45,7 @@ const Specials = () => {
                             description={data.description}
                         />
                     ))}
-                </HStack>
+                </Box>
             </VStack>
         </section>
     );

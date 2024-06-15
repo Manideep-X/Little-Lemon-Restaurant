@@ -76,7 +76,7 @@ const Footer = () => {
             </Box>
             <section className='navList listing'>
                 <label htmlFor='foot-nav' >
-                    <Heading size="md" fontFamily={`"Karla", sans-serif;`}>Navigation</Heading>
+                    <Heading size="lg" fontFamily={`"Markazi Text", serif;`}>Navigation</Heading>
                 </label>
                 <ul id='foot-nav' name='foot-nav'>
                     {navbarLinks.map((navList) => (
@@ -86,7 +86,7 @@ const Footer = () => {
             </section>
             <section className='contactList listing'>
                 <label htmlFor='foot-contact' >
-                    <Heading size="md" fontFamily={`"Karla", sans-serif;`}>Contacts</Heading>
+                    <Heading size="lg" fontFamily={`"Markazi Text", serif;`}>Contacts</Heading>
                 </label>
                 <ul id='foot-contact' name='foot-contact'>
                     {contacts.map((navList) => (
@@ -96,7 +96,7 @@ const Footer = () => {
             </section>
             <section className='socialList listing'>
                 <label htmlFor='foot-social'>
-                    <Heading size="md" fontFamily={`"Karla", sans-serif;`} target='_blank' rel='noreferrer'>Social Media</Heading>
+                    <Heading size="lg" fontFamily={`"Markazi Text", serif;`} target='_blank' rel='noreferrer'>Social Media</Heading>
                 </label>
                 <ul id='foot-social' name='foot-social'>
                     {social.map((navList) => (

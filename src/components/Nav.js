@@ -1,19 +1,45 @@
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from '../icons_assets/Logo.svg';
 import { Box, HStack } from "@chakra-ui/react";
+import '../stylesheets/Nav.css'
 
 const Nav = ({ navbarLinks }) => {
 
+    const [isVisible, setIsVisible] = useState(true);
+    const prevYPos = useRef(window.scrollY);
+
+    const handleScroll = () => {
+        const currYPos = window.scrollY;
+        if (currYPos > prevYPos.current) {
+            setIsVisible(false);
+        } else {
+            setIsVisible(true);
+        }
+        prevYPos.current = currYPos;
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        };
+    }, []);
+
     return (
-        <nav className="navbar">
+        <nav className="navbar" style={{ transform: isVisible ? "translateY(0)" : "translateY(-100%)" }}>
             <Box as="nav" >
-                <HStack spacing={8} style={{display : "flex" , justifyContent : "center"}}>
-                    <img src={Logo} alt="Little Lemon" width="200vw" />
-                    {navbarLinks.map((link, index) => (
-                        <Link key={index} to={link.path} style={{fontSize:"1rem"}}>
-                            {link.text}
-                        </Link>
-                    ))}
+                <HStack spacing={60} style={{ display: "flex", justifyContent: "center", padding: "2vh 0vw" }}>
+                    <Link to='/'>
+                        <img src={Logo} alt="Little Lemon" width="255vw" style={{}} />
+                    </Link>
+                    <HStack spacing={6}>
+                        {navbarLinks.map((link, index) => (
+                            <Link className="anchor" key={index} to={link.path} style={{ fontSize: "1.1rem", fontWeight: "600", paddingTop: "0.6vh" }}>
+                                {link.text}
+                            </Link>
+                        ))}
+                    </HStack>
                 </HStack>
             </Box>
         </nav>

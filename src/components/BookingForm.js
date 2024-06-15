@@ -1,6 +1,7 @@
 import { useState } from "react";
 import * as Yup from 'yup';
 import { useFormik } from "formik";
+import '../stylesheets/BookingForm.css'
 import {
     Box,
     FormControl,
@@ -58,11 +59,11 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
     });
 
     return (
-        <Box style={{textAlign:"center"}}>
-            <form onSubmit={formik.handleSubmit} style={{ width: "50vw", margin:"0 auto" }}>
-                <h1>Let's Reserve a Table for You !</h1>
+        <Box className="book-box" style={{textAlign:"center"}}>
+            <form onSubmit={formik.handleSubmit} style={{ width: "48vw", margin:"0 auto" }}>
+                <h1 className="book-heading" fontFamily={`"Markazi Text", serif;`}>Let's Reserve a Table for You !</h1>
 
-                <VStack spacing={12}>
+                <VStack spacing={12} style={{backgroundColor:"#495e57",margin:"3vh 0vw",padding:"4vh 6vw",borderRadius:"20px"}}>
 
                     <FormControl isInvalid={formik.touched.date && !!formik.errors.date}>
                         <FormLabel htmlFor="res-data">Choose date</FormLabel>
@@ -87,10 +88,11 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                             placeholder="Choose from below"
                             value={formData.time}
                             onChange={onChangeData}
+                            style={{backgroundColor:"#495e57"}}
                             {...formik.getFieldProps('time')}
                         >
                             {availableTimes.map((times) => (
-                                <option key={times} value={times} >{times}</option>
+                                <option key={times} value={times} style={{backgroundColor:"#495e57"}}>{times}</option>
                             ))}
                         </Select>
                         {formik.touched.time && formik.errors.time ? (
@@ -122,12 +124,13 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                             placeholder="Choose Occasion"
                             value={formData.occasion}
                             onChange={onChangeData}
+                            style={{backgroundColor:"#495e57"}}
                             {...formik.getFieldProps('occasion')}
                         >
-                            <option value="Birthday" >Birthday</option>
-                            <option value="Anniversary" >Anniversary</option>
-                            <option value="Other" >Other</option>
-                            <option value="Nothing_special" >Nothing special</option>
+                            <option value="Birthday" style={{backgroundColor:"#495e57"}}>Birthday</option>
+                            <option value="Anniversary" style={{backgroundColor:"#495e57"}}>Anniversary</option>
+                            <option value="Other" style={{backgroundColor:"#495e57"}}>Other</option>
+                            <option value="Nothing_special" style={{backgroundColor:"#495e57"}}>Nothing special</option>
                         </Select>
                         {formik.touched.occasion && formik.errors.occasion ? (
                             <FormErrorMessage>{formik.errors.occasion}</FormErrorMessage>

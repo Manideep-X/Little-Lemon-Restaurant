@@ -1,0 +1,32 @@
+.callToAction {
+    background-color: #495e57;
+    color: white;
+    font-family: "Markazi Text", serif;
+    width: 100%;
+    padding: 12vh 16vw;
+}
+.callToAction h1{
+    color: #f4ce14;
+}
+.callToAction p, .call-box{
+    margin-top: 3vh;
+}
+.callToAction p{
+    padding-right: 10vw;
+}
+.callToAction img {
+    box-shadow: 3px 4px 20px rgba(0, 0, 0, 0.4);
+}
+.call-box{
+    width: 13vw;
+    font-weight: 800;
+    box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.4);
+    transition: all 300ms ease-in-out;
+}
+.call-box:hover{
+    font-weight: 900;
+    box-shadow: 3px 4px 15px rgba(0, 0, 0, 0.6);
+}
+.call-box:active{
+    box-shadow: 3px 4px 8px rgba(0, 0, 0, 0.414);
+}

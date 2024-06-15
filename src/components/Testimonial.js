@@ -1,10 +1,10 @@
 import { VStack, Box, Avatar, HStack, Heading, Text } from "@chakra-ui/react";
 import star from '../icons_assets/star.svg'
-
+import '../stylesheets/Testimonial.css'
 
 const Testimonial = ({ photo, name, review }) => {
     return (
-        <Box>
+        <Box className="review-box">
             <VStack spacing={4}>
                 <HStack spacing={1}>
                     {[...Array(5)].map((_, index) => (
@@ -13,7 +13,7 @@ const Testimonial = ({ photo, name, review }) => {
                 </HStack>
                 <HStack>
                     <Avatar size="xl" name={name} src={photo} />
-                    <Heading size="md" fontFamily={`"Karla", sans-serif;`}>{name}</Heading>
+                    <Heading size="md" fontFamily={`"Markazi Text", serif;`}>{name}</Heading>
                 </HStack>
                 <Text fontSize="sm" color="rgba(0,0,0,0.6)" fontFamily={`"Karla", sans-serif;`} textAlign="center">"{review}..."</Text>
             </VStack>

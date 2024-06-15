@@ -1,5 +1,6 @@
-import { HStack, Heading, VStack } from "@chakra-ui/react"
+import { Box, Heading, VStack } from "@chakra-ui/react";
 import Testimonial from "./Testimonial";
+import '../stylesheets/CustomerSay.css';
 
 const reviewData = [
     {
@@ -26,9 +27,9 @@ const reviewData = [
 
 const CustomersSay = () => {
     return (
-        <VStack spacing={12}>
-            <Heading as="h1" size="xl" fontFamily={`"Karla", sans-serif;`}>Testimonials</Heading>
-            <HStack spacing={8}>
+        <VStack className="custo-VStack" spacing={12}>
+            <Heading as="h1" size="xl" fontFamily={`"Markazi Text", serif;`} style={{padding:"5vh 0vw"}}>Testimonials</Heading>
+            <Box className="custo-box" style={{display:"flex", flexWrap:"wrap", alignItems:"center", justifyContent:"center"}}>
                 {reviewData.map((data) => (
                     <Testimonial
                         key={data.name}
@@ -37,7 +38,7 @@ const CustomersSay = () => {
                         review={data.review}
                     />
                 ))}
-            </HStack>
+            </Box>
         </VStack>
     );
 };
